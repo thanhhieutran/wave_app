@@ -1,0 +1,97 @@
+[
+    {
+        "id": "642df048fec32f2e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7acf421780b328e9",
+        "type": "sqlitedb",
+        "db": "/home/hieutran/Documents/wave_app/sqlite3/ProcessDb",
+        "mode": "RWC"
+    },
+    {
+        "id": "a58312c41f8e4a4a",
+        "type": "inject",
+        "z": "642df048fec32f2e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "871874b55998a2c3"
+            ]
+        ]
+    },
+    {
+        "id": "871874b55998a2c3",
+        "type": "function",
+        "z": "642df048fec32f2e",
+        "name": "function 1",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\nmsg.payload = [\"tag1\", 36,\"2023-10-12 12:31:00\"]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 180,
+        "wires": [
+            [
+                "e9934c974ee05d08",
+                "f82b97db86c7631b"
+            ]
+        ]
+    },
+    {
+        "id": "e9934c974ee05d08",
+        "type": "sqlite",
+        "z": "642df048fec32f2e",
+        "mydb": "7acf421780b328e9",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "ProcessDb",
+        "x": 830,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f82b97db86c7631b",
+        "type": "debug",
+        "z": "642df048fec32f2e",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 260,
+        "wires": []
+    }
+]

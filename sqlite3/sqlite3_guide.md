@@ -1,22 +1,29 @@
 # Open Sqlite3
 sqlite3
-# Create new database
+# Create/Open database
 -- Create a new database named 'mydatabase.db'
 .open mydatabase.db
 # Create table and Perform Queries
--- Create a table named 'students'
-CREATE TABLE students (
+-- Create a table named 'kiln'
+CREATE TABLE kiln (
     id INTEGER PRIMARY KEY,
-    name TEXT,
-    age INTEGER
+    tag TEXT,
+    value REAL,
+    time DATETIME
 );
 
--- Insert data into the 'students' table
-INSERT INTO students (name, age) VALUES ('Alice', 25);
-INSERT INTO students (name, age) VALUES ('Bob', 30);
+-- Insert data into the table
+INSERT INTO kiln (tag, value, time) VALUES ('tag1', 25, 'e');
 
--- Query the 'students' table
-SELECT * FROM students;
+
+-- Query the  table
+SELECT * FROM kiln;
 
 # Show all Table
 .tables
+
+# Check schema table
+PRAGMA talbe_info(table_name)
+
+
+# Clear all record
