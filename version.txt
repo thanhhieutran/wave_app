@@ -1,0 +1,12 @@
+# Node Js
+v20.9.0
+# npm version
+10.1.0
+# nvm version
+0.39.5
+python version
+Python 3.10.12
+# Node red version
+Node-RED version: v3.1.0
+# sqlite3 version
+3.37.2 2022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5dalt1
