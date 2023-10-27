@@ -4,7 +4,7 @@ v20.9.0
 10.1.0
 # nvm version
 0.39.5
-python version
+# python version
 Python 3.10.12
 # Node red version
 Node-RED version: v3.1.0
