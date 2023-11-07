@@ -7,4 +7,6 @@
 - Gõ lệnh: ./waved
 - Mở trình duyệt kiểm tra : http://localhost:10101/
 ## Cập nhật page cụ thể:
-- Chạy file đó bằng python : python <tên file>.py
+- [ Chạy Script ]Chạy file đó bằng python : python <tên file>.py
+- [ Chạy App Wave]: wave run <ten file>.py
+    - Chạy App thì nó sẽ liên tục được update
