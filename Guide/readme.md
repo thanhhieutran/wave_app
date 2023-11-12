@@ -8,5 +8,8 @@
 - Mở trình duyệt kiểm tra : http://localhost:10101/
 ## Cập nhật page cụ thể:
 - [ Chạy Script ]Chạy file đó bằng python : python <tên file>.py
-- [ Chạy App Wave]: wave run <ten file>.py
+- [ Chạy App Wave]: wave run <ten file>  # Tuyệt đối không dùng .py
     - Chạy App thì nó sẽ liên tục được update
+
+
+------------------

@@ -23,7 +23,7 @@ SELECT * FROM kiln;
 .tables
 
 # Check schema table
-PRAGMA talbe_info(table_name)
+PRAGMA table_info(table_name);
 
 
 # Clear all record

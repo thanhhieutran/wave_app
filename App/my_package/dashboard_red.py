@@ -19,7 +19,7 @@ async def show_red_dashboard(q: Q):
                     ]),
                 ]),
                 ui.zone('middle', direction=ui.ZoneDirection.ROW, size='385px'),
-                ui.zone('b ottom', direction=ui.ZoneDirection.ROW, size='385px', zones=[
+                ui.zone('bottom', direction=ui.ZoneDirection.ROW, size='385px', zones=[
                     ui.zone('bottom_left'),
                     ui.zone('bottom_right', size='66%'),
                 ]),
