@@ -1,5 +1,8 @@
 from h2o_wave import main, app, Q
 
+from my_package.dashboard_kiln import show_dashboard_kiln
+from my_package.dashboard_general import show_general_dashboard
+#---------------------------------
 from my_package.dashboard_red import show_red_dashboard
 from my_package.dashboard_blue import show_blue_dashboard
 from my_package.dashboard_orange import show_orange_dashboard
@@ -7,7 +10,7 @@ from my_package.dashboard_cyan import show_cyan_dashboard
 from my_package.dashboard_grey import show_grey_dashboard
 from my_package.dashboard_mint import show_mint_dashboard
 from my_package.dashboard_purple import show_purple_dashboard
-from my_package.dashboard_kiln import show_dashboard_kiln
+
 
 @app('/')
 async def serve(q: Q):
@@ -15,6 +18,8 @@ async def serve(q: Q):
     q.page.drop()
     if route == 'dashboards/kiln': # Trang : http://localhost:10101/#dashboards/kiln
         await show_dashboard_kiln(q)
+    elif route == 'dashboards/general':
+        await show_general_dashboard(q)
 #-------------------------------------------------------
     elif route == 'dashboards/red':
         await show_red_dashboard(q)    
