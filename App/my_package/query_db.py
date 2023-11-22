@@ -92,3 +92,49 @@ def get_database_info():
 
     return {'tables': table_info, 'schemas': schema_info}
 
+# Description: Update new image
+def update_image_db(name=None, type=None, image_base64=None):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    # Construct the SQL query based on parameters
+    query = f'SELECT name, type, image_base64 FROM image_db WHERE name={name}'
+    params = []
+
+    try:
+        cursor.execute(query, params)
+        data = cursor.fetchall()
+        conn.close()
+    except:
+        data =[] # no data
+    
+    # For check image already in database by name, type
+    ## 0: no image have same name, type in DB
+    ## 1: have image same name, but not same type
+    ## 2: have image same name, type
+    check_image = 0
+    
+    if len(data):
+        check_image = 1
+        print('This image have same name, let check type')
+        for image in range(len(data)):
+            if image[1]==type :
+                check_image = 2
+    
+    # Update / Insert  image to image_db
+    if check_image ==2: # if image have same name, tpye, just update content
+        query_update = f'UPDATE image_db SET image_base64 = {image_base64}'
+        params_update  = []
+
+        cursor.execute(query_update, params_update)
+        print(f'Updated image {name}.{type}')
+        conn.close()
+    else:
+        query_insert = f'INSERT INTO image_db (name, type, image_base64) VALUES ( {name}, {type}, {image_base64} )'
+        params_insert  = []
+
+        cursor.execute(query_insert, params_insert)
+        print(f'Inserted image {name}.{type}')
+        conn.close()
+
+

@@ -2,7 +2,10 @@ from h2o_wave import ui, data, Q
 from .common import global_nav
 from .synthetic_data import *
 from .config import *
-
+#-----
+import base64
+from PIL import Image
+#-----
 
 async def show_general_dashboard(q: Q):
 #----- Setup Layout
@@ -31,25 +34,52 @@ async def show_general_dashboard(q: Q):
                                                      items=global_nav),])
 
 #----- Body
-
+    image_path = '/home/hieutran/Documents/wave_app/App/media/cement_factory2.jpg'
+    with open(image_path, 'rb') as image_file:
+        # Read the image file as bytes
+        image_data = image_file.read()
+        image_base64 = base64.b64encode(image_data).decode('utf-8')    
+##---- Thông tin tổng quan nhà máy
     q.page['layout1'] = ui.form_card(
         box='top_left',
-        title='top_left',
+        title='',
         items=[
+            ui.inline(direction='row',items=[
+                ui.inline(direction='column', items=[
+                    ui.text(content='Cối đập', size='xl'),
+                    ui.text(content='Cối đập', size='xl'),
+                ]),
+                ui.inline(direction='column', items=[
+                    ui.text(content='Nghiền bột sống', size='xl'),
+                    ui.text(content='Nghiền bột sống', size='xl'),
+                ]),
+                ui.inline(direction='column', items=[
+                    ui.text(content='Nghiền than', size='xl'),
+                    ui.text(content='Nghiền than', size='xl'),
+                ]),
+                ui.inline(direction='column', items=[
+                    ui.text(content='Lò nung', size='xl'),
+                    ui.text(content='Lò nung', size='xl'),
+                ]),
+                ui.inline(direction='column', items=[
+                    ui.text(content='Nghiền xi măng', size='xl'),
+                    ui.text(content='Nghiền xi măng', size='xl'),
+                ]),
+                ui.inline(direction='column', items=[
+                    ui.text(content='Đóng bao', size='xl'),
+                    ui.text(content='Đóng bao', size='xl'),
+                ]),
+                
+            ]),
+            ui.image(title='Image title', path=f'data:image/jpg;base64,{image_base64}', width='100%'),
         ],
     )
-    q.page['layout2'] = ui.form_card(
-        box='middle',
-        title='middle',
-        items=[
-        ],
-    )
-    q.page['layout3'] = ui.form_card(
-        box='bottom',
-        title='bottom',
-        items=[
-        ],
-    )
+
+    # q.page['layout3'] = ui.image_card(
+    #     box='bottom',
+    #     title='image',
+    #     path='App/media/photo.jpg',
+    # )
 
  
 #----- Footer
