@@ -2,10 +2,10 @@ from h2o_wave import ui, data, Q
 from .common import global_nav
 from .synthetic_data import *
 from .config import *
+from .query_db import * # import all function to querry db
 #-----
 import base64
 from PIL import Image
-#-----
 
 async def show_general_dashboard(q: Q):
 #----- Setup Layout
@@ -34,11 +34,11 @@ async def show_general_dashboard(q: Q):
                                                      items=global_nav),])
 
 #----- Body
-    image_path = '/home/hieutran/Documents/wave_app/App/media/cement_factory2.jpg'
-    with open(image_path, 'rb') as image_file:
-        # Read the image file as bytes
-        image_data = image_file.read()
-        image_base64 = base64.b64encode(image_data).decode('utf-8')    
+##---- Prepare Data
+    process_image = get_image_from_path('/home/hieutran/Documents/wave_app/App/media/cement_factory.jpg')
+    process_image_base64 = process_image[2]
+
+    
 ##---- Thông tin tổng quan nhà máy
     q.page['layout1'] = ui.form_card(
         box='top_left',
@@ -71,7 +71,7 @@ async def show_general_dashboard(q: Q):
                 ]),
                 
             ]),
-            ui.image(title='Image title', path=f'data:image/jpg;base64,{image_base64}', width='100%'),
+            ui.image(title='Image title', path=f'data:image/jpg;base64,{process_image_base64}', width='100%'),
         ],
     )
 
