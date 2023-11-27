@@ -174,16 +174,18 @@ async def show_general_dashboard(q: Q):
         ]
     )
 ##---- Thông tin sửa chữa
-    trend_date = generate_time_series(60)
-    trend_price = generate_random_walk(2000, 8000, 0.2)
-    
     if q.args.show_inputs:
+        if q.args.dropdown == None:
+            areas = 0
+        else:
+            areas =int(q.args.dropdown)-1
+        d = repair_info[areas]
         q.page['drop_down_page'] = ui.form_card(
         box='bottom_mid',
-        title='Khu vực',
+        title='Khu vực sửa chữa',
         items=[
             ui.inline(inset=True, items=[
-                ui.dropdown(name='dropdown', value='Cối Đập', placeholder='Cối đập', choices=[
+                ui.dropdown(name='dropdown', value='1', choices=[
                     ui.choice('1','Cối Đập'),
                     ui.choice('2','Nghiền Bột Sống'),
                     ui.choice('3','Lò Nung'),
@@ -193,30 +195,27 @@ async def show_general_dashboard(q: Q):
                         ]),
                 ui.button(name='show_form', label='Xem', primary=True),
             ]),
-        #     ui.visualization(
-        # plot=ui.plot([ui.mark(type='interval', x='=product', y='=price', y_min=0)]),
-        # data=data(fields='product price', rows=[
-        #     ('category1', 7),
-        #     ('category2', 8),
-        #     ('category3', 9),
-        # ])),
-            ui.text(f'dropdown={q.args.dropdown}'),
         ])
         q.page['Pie_chart'] = ui.wide_pie_stat_card(
             box='bottom_mid',
-            title='Wide Pie Stat',
+            title=f'Tỷ lệ sửa chữa khu vực {d[0]}',
             pies=[
-                ui.pie(label='Category 1', value='35%', fraction=0.35, color='#2cd0f5', aux_value='$ 35'),
-                ui.pie(label='Category 2', value='65%', fraction=0.65, color='$green', aux_value='$ 65'),
+                ui.pie(label='Sửa chữa cơ', value=f'{d[3]}', fraction=d[5], color=f'{d[7]}', aux_value=f'{d[1]}'),
+                ui.pie(label='Sửa chữa điện', value=f'{d[4]}', fraction=d[6], color=f'{d[8]}', aux_value=f'{d[2]}'),
             ]
         )
     else:
+        if q.args.dropdown == None:
+            areas = 0
+        else:
+            areas =int(q.args.dropdown)-1
+        d = repair_info[areas]
         q.page['drop_down_page'] = ui.form_card(
         box='bottom_mid',
-        title='Khu vực',
+        title='Khu vực sửa chữa',
         items=[
             ui.inline(inset=True, align='center', items=[
-                ui.dropdown(name='dropdown', value='Cối Đập', placeholder='Cối đập', choices=[
+                ui.dropdown(name='dropdown', value='1', choices=[
                     ui.choice('1','Cối Đập'),
                     ui.choice('2','Nghiền Bột Sống'),
                     ui.choice('3','Lò Nung'),
@@ -226,21 +225,13 @@ async def show_general_dashboard(q: Q):
                         ]),
                 ui.button(name='show_inputs', label='Xem', primary=True),
             ]),
-        #     ui.visualization(
-        # plot=ui.plot([ui.mark(type='interval', x='=product', y='=price', y_min=0)]),
-        # data=data(fields='product price', rows=[
-        #     ('category1', 7),
-        #     ('category2', 8),
-        #     ('category3', 9),
-        # ])),
-            ui.text(f'dropdown={q.args.dropdown}'),
         ])
         q.page['Pie_chart'] = ui.wide_pie_stat_card(
             box='bottom_mid',
-            title=f'Tỷ lệ sửa chữa khu vực {repair_info[0][0]}',
+            title=f'Tỷ lệ sửa chữa khu vực {d[0]}',
             pies=[
-                ui.pie(label='Sửa chữa cơ', value='35%', fraction=0.90, color='#2cd0f5', aux_value='100 giờ'),
-                ui.pie(label='Sửa chữa điện', value='65%', fraction=0.10, color='$green', aux_value='45 giờ'),
+                ui.pie(label='Sửa chữa cơ', value=f'{d[3]}', fraction=d[5], color=f'{d[7]}', aux_value=f'{d[1]}'),
+                ui.pie(label='Sửa chữa điện', value=f'{d[4]}', fraction=d[6], color=f'{d[8]}', aux_value=f'{d[2]}'),
             ]
         )
 

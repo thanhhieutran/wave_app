@@ -108,4 +108,3 @@ if __name__ == '__main__':
     # # audience_hits1 = generate_random_walk(10000, 20000, 0.2)
     # print([('A', next(audience_days1), next(env_value('nghien_than'))) for i in range(9)])
 
-
