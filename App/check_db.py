@@ -6,6 +6,7 @@ from PIL import Image
 import os
 from io import BytesIO
 import matplotlib.pyplot as plt
+from my_package.synthetic_data import *
 
 # Read me
 # This file for check all infor all your database is using in this Application
@@ -103,7 +104,8 @@ if __name__ == '__main__':
         print("""#5---Get image function is disable - Please enable it if you want to use""")
 
 
-
-
+    # audience_days1 = generate_time_series(1)
+    # # audience_hits1 = generate_random_walk(10000, 20000, 0.2)
+    # print([('A', next(audience_days1), next(env_value('nghien_than'))) for i in range(9)])
 
 

@@ -5,7 +5,7 @@ table_general = "general"
 table_kiln = "kiln"
 # For check_db.py
 ## For checking database
-show_db_info            =   True
+show_db_info            =   False
 show_kiln_data          =   False
 check_distinct_data     =   False
 update_image            =   False # Clear firest, then update

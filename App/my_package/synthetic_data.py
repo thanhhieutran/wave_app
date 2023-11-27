@@ -87,8 +87,51 @@ def generate_random_walk(min=0, max=100, variation=0.1):
         if not min <= x <= max:
             x = random.randint(min, max)
         yield x
+#------------------
+## Chủng loại xi măng sản xuất của nhà máy
+type_cement = ['ASTM C150- Bao 50kg', 'ASTM C150- Roi', 'Power- Bao 50kg', 'Green PC40 - Bao 50kg', 'Green PC40 - Roi', 'PCB40- Bao Jumbo', 'ASTM C150 Type I- Bao Jumbo','PCB50 - Bao 50kg' ,'PCB50 - Roi']
+def generate_type_cement(type_cement):
+    # while True:
+    #     yield random.choice(type_cement)
+    while True:
+        for cement_type in type_cement:
+            yield cement_type
+## Dữ liệu sửa chữa của nhà máy
+### (label='Sửa chữa cơ', value='35%', fraction=0.90, color='#2cd0f5', aux_value='100 giờ')
+repair_info = [
+    ['Cối đập','35%', 0.35, '#2cd0f5', '35 giờ', '65%', 0.35, '$green', '65 giờ'],
+    ['Nghiền Bột Sống','35%', 0.35, '#2cd0f5', '35 giờ', '65%', 0.35, '$green', '65 giờ'],
+    ['Lò Nung','35%', 0.35, '#2cd0f5', '35 giờ', '65%', 0.35, '$green', '65 giờ'],
+    ['Nghiền Xi Măng','35%', 0.35, '#2cd0f5', '35 giờ', '65%', 0.35, '$green', '65 giờ'],
+    ['Máy Đóng Bao','35%', 0.35, '#2cd0f5', '35 giờ', '65%', 0.35, '$green', '65 giờ'],
+    ['Xuất Xi Măng Rời','35%', 0.35, '#2cd0f5', '35 giờ', '65%', 0.35, '$green', '65 giờ'],
+]
+## Dữ liệu môi trường
+env_nghien_than = [51,66,  49,  15,  67,  39,  13,  45,  32,  16]
+env_lo_nung = [59,  52,  53,  19,  56,  62,  54,  31,  30,  24]
+env_lam_nguoi = [12,  23,  33,  65,  57,  29,  34,  22,  43,  55]
+env_xi_mang = [14,  41,  38,  25,  42,  48,  68,  60,  69,  63]
+env_month = ["T1",	"T2",	"T3",	"T4",	"T5",	"T6",	"T7",	"T8",	"T9",	"T10"]
+def env_value(area=None):
+    if area == 'nghien_than':
+        data_env = env_nghien_than
+    elif area == 'lo_nung':
+        data_env = env_lo_nung
+    elif area == 'lam_nguoi':
+        data_env = env_lam_nguoi
+    elif area == 'xi_mang':
+        data_env = env_xi_mang
+    elif area == 'month':
+        data_env = env_month
+    while True:
+        for data in data_env:
+            yield data
 
 
+# #------------------
+
+
+#------------------
 sample_title = generate_title()
 sample_term = generate_term()
 sample_caption = generate_caption()

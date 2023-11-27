@@ -11,6 +11,15 @@
 - [ Chạy App Wave]: wave run <ten file>  # Tuyệt đối không dùng .py
     - Chạy App thì nó sẽ liên tục được update
 
+## Chạy tour app - để học
+- Mở Terminal
+- Chạy Wave Servẻ
+- Chạy python ảo (venv)
+- Trỏ đến thư mục WaveServerForLinux/wave-server
+- Gõ lệnh: "wave run --no-reload examples.tour"
+
+
+
 # Các file chức năng
 ## Test kiểm tra Database
 - Link file: /home/hieutran/Documents/wave_app/App/check_db.py
