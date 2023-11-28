@@ -7,7 +7,7 @@ table_kiln = "kiln"
 ## For checking database
 show_db_info            =   False
 show_kiln_data          =   False
-check_distinct_data     =   False
+check_distinct_data     =   True
 update_image            =   False # Clear firest, then update
 get_image_string         =   False
 

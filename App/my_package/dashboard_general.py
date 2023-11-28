@@ -163,14 +163,33 @@ async def show_general_dashboard(q: Q):
     q.page['transactions'] = ui.stat_table_card(
         box=ui.box('bottom_left', order=1, size=2),
         title='Mục tiêu sản xuất',
-        subtitle=next(sample_caption),
-        columns=[next(sample_term) for i in range(4)],
+        subtitle='Bảng thông tin thực tế và mục tiêu sản xuất',
+        columns=['Chỉ Tiêu Sản Xuất', 'Thực tế', 'Mục Tiêu'],
         items=[
             ui.stat_table_item(
-                label=next(sample_title),
+                label='Tiêu Hao Bột Liệu Sản Xuất Clinker',
                 caption=f'{random.randint(1, 5)} hours ago',
-                values=[next(sample_percent), next(sample_amount), next(sample_dollars)],
-                icon=next(sample_icon), icon_color='$mint') for i in range(6)
+                values=['1.63 Tấn/Tấn CLK', '1.57 Tấn/Tấn CLK'],
+                colors = ['$blue', '$red']
+                ),
+            ui.stat_table_item(
+                label='Tiêu Hao Điện Sản Xuất Clinker',
+                caption=f'{random.randint(1, 5)} hours ago',
+                values=['62.42 kWh/T', '68.48 kWh/T'],
+                colors = ['$blue', '$red']
+                ),
+            ui.stat_table_item(
+                label='Tiêu Hao Nhiệt Sản Xuất Clinker',
+                caption=f'{random.randint(1, 5)} hours ago',
+                values=['780.00 kcal/kgCLK', '800.00 kcal/kgCLK'],
+                colors = ['$blue', '$red']
+                ),
+            ui.stat_table_item(
+                label='Tiêu Hao Điện Nghiền Xi',
+                caption=f'{random.randint(1, 5)} hours ago',
+                values=['27.52 kWh/T', '29.00 kWh/T'],
+                colors = ['$blue', '$red']
+                )
         ]
     )
 ##---- Thông tin sửa chữa

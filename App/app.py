@@ -1,5 +1,5 @@
 from h2o_wave import main, app, Q
-
+import time
 from my_package.dashboard_kiln import show_dashboard_kiln
 from my_package.dashboard_general import show_general_dashboard
 #---------------------------------
@@ -12,7 +12,7 @@ from my_package.dashboard_mint import show_mint_dashboard
 from my_package.dashboard_purple import show_purple_dashboard
 
 
-@app('/')
+@app('/', mode='multicast')
 async def serve(q: Q):
     route = q.args['#'] # Trang mặc định: http://localhost:10101/#
     q.page.drop()
@@ -37,3 +37,5 @@ async def serve(q: Q):
         await show_purple_dashboard(q)
     else:
         await show_mint_dashboard(q)
+    
+    await q.page.save()
