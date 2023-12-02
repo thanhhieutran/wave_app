@@ -4,7 +4,7 @@
 - Mở trình duyệt node red: http://127.0.0.1:1880/
 ## Run Wave server: (có thể chạy bất kỳ môi trường nào- venv, hoặc python trực tiếp trên máy)
 - Trỏ đến thư mục wave Server: /home/hieutran/Documents/wave_app/WaveServerForLinux/wave-server
-- Gõ lệnh: ./waved
+- Gõ lệnh: ./waved || với Windown : waved.exe
 - Mở trình duyệt kiểm tra : http://localhost:10101/
 ## Cập nhật page cụ thể:
 - [ Chạy Script ]Chạy file đó bằng python : python <tên file>.py
@@ -13,7 +13,7 @@
 
 ## Chạy tour app - để học
 - Mở Terminal
-- Chạy Wave Servẻ
+- Chạy Wave Server
 - Chạy python ảo (venv)
 - Trỏ đến thư mục WaveServerForLinux/wave-server
 - Gõ lệnh: "wave run --no-reload examples.tour"

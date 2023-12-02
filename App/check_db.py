@@ -104,7 +104,27 @@ if __name__ == '__main__':
         print("""#5---Get image function is disable - Please enable it if you want to use""")
 
 
-    # audience_days1 = generate_time_series(1)
-    # # audience_hits1 = generate_random_walk(10000, 20000, 0.2)
-    # print([('A', next(audience_days1), next(env_value('nghien_than'))) for i in range(9)])
+    #6 Create table image
+    # conn = sqlite3.connect(DB_PATH)
+
+    # # Create a cursor object to execute SQL queries
+    # cursor = conn.cursor()
+
+    # # Define the SQL query to create the table
+    # create_table_query = '''
+    #     CREATE TABLE IF NOT EXISTS image_db (
+    #         id INTEGER PRIMARY KEY,
+    #         name TEXT,
+    #         type TEXT,
+    #         image_base64 TEXT
+    #     )
+    # '''
+
+    # # Execute the query to create the table
+    # cursor.execute(create_table_query)
+
+    # # Commit changes and close the connection
+    # conn.commit()
+    # conn.close()
+    # print('done')
 
