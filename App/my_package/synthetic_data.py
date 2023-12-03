@@ -1,5 +1,7 @@
 import datetime
 import random
+import  sqlite3
+from .query_db import *
 
 lorem_ipsum = (
     'ab', 'accusamus', 'accusantium', 'ad', 'adipisci', 'alias', 'aliquam', 'aliquid', 'amet', 'animi', 'aperiam',
@@ -127,8 +129,15 @@ def env_value(area=None):
         for data in data_env:
             yield data
 
-
+## Dữ liệu lò nung
 # #------------------
+distinct_data = get_distinct_data(table='kiln', name_col='tag')
+tag_list = []
+for data in distinct_data:
+    tag_list.append(data[0])
+def tag_name_kiln():
+    while True:
+        yield random.choice(tag_list)
 
 
 #------------------

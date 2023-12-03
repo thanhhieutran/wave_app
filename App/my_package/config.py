@@ -1,6 +1,6 @@
 # For Database
 # data_path = "/home/hieutran/Documents/wave_app/sqlite3/ProcessDb" # Path to Database (Sqlite3)
-data_path = "D:/Wave-app/wave_app/sqlite3/ProcessDb" # Path to Database (Sqlite3)
+data_path = "C:/Wave-App/wave_app/sqlite3/ProcessDb" # Path to Database (Sqlite3)
 table_image = "image_db"
 table_general = "general"
 table_kiln = "kiln"
@@ -18,4 +18,4 @@ icon_page = 'https://www.biendongco.vn/resources/img/theme-setting/6-2018/2-logo
 
 # Image folder
 # image_folder_path = 'App/media' # Linux
-image_folder_path = 'D:/Wave-app/wave_app/App/media'
+image_folder_path = 'C:/Wave-App/wave_app/App/media'

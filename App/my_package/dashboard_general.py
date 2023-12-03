@@ -3,7 +3,6 @@ from .common import global_nav
 from .synthetic_data import *
 from .config import *
 from .query_db import * # import all function to querry db
-#-----
 import base64
 from PIL import Image
 

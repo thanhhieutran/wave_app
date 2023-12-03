@@ -31,3 +31,12 @@
 [(3813, 'Pyrometer', 1211.0, '2023-10-28 01:22:29:907'), (3814, 'kiln_speed', 323.0, '2023-10-28 01:22:34:905'), (3815, 'Pyrometer', 1248.0, '2023-10-28 01:22:39:908'), (3816, 'kiln_speed', 303.0, '2023-10-28 01:22:44:908'), (3817, 'Pyrometer', 1110.0, '2023-10-28 01:22:49:909'), (3818, 'kiln_speed', 392.0, '2023-10-28 01:22:54:913'), (3819, 'Pyrometer', 1147.0, '2023-10-28 01:22:59:916'), (3820, 'kiln_speed', 332.0, '2023-10-28 01:23:04:914'), (3821, 'Pyrometer', 1299.0, '2023-10-28 01:23:09:916'), (3822, 'kiln_speed', 470.0, '2023-10-28 01:23:14:915')]
 
 ------------------
+# Hướng dẫn chuyển đổi môi trường
+- (1) Cài: vscode, nodejs...
+- (2) Tải app từ github
+- (3) Cài venv và kích hoạt
+- (4) Copy database chuẩn vào
+- (5) Cài thư viện bằng requirement.txt
+- (6) Thiết lập các đường dẫn ở file config.py
+- (7) Chạy Server và cấp full quyền truy cập
+- (8) Chạy file App (nhớ cd đến thư mục App) (trường hợp nếu lỗi- Reset lại hệ thống)
