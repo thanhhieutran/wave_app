@@ -108,3 +108,9 @@ if __name__ == '__main__':
     # # audience_hits1 = generate_random_walk(10000, 20000, 0.2)
     # print([('A', next(audience_days1), next(env_value('nghien_than'))) for i in range(9)])
 
+    # test_data = get_kiln_data(limit=4, tag='Pyrometer')
+    # print(test_data)
+    # # for test in test_data:
+    # #     print(test)
+    pyrometer_data = get_kiln_data (tag="Pyrometer", limit=10)  
+    print(pyrometer_data)

@@ -1,5 +1,7 @@
 import datetime
 import random
+import  sqlite3
+from .query_db import *
 
 lorem_ipsum = (
     'ab', 'accusamus', 'accusantium', 'ad', 'adipisci', 'alias', 'aliquam', 'aliquid', 'amet', 'animi', 'aperiam',
@@ -129,14 +131,17 @@ def env_value(area=None):
 
 
 ## Dữ liệu lò nung
-# #------------------
-# distinct_data = get_distinct_data(table='kiln', name_col='tag')
-# tag_list_kiln = []
-# for tag in distinct_data:
-#     tag_list_kiln.append(tag[0])
-# def tag_name_kiln():
+
+
+
+# def get_timeseries_data(type=None):
+#     if type == "time":
+#         data_return = pyrometer_time_data
+#     elif type =="pv":
+#         data_return = pyrometer_pv_data
 #     while True:
-#         yield random.choice(tag_list_kiln)
+#         for data in data_return:
+#             yield data
 
 
 

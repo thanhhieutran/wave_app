@@ -270,11 +270,11 @@ async def show_general_dashboard(q: Q):
             ui.text('Nồng độ bụi tại các khu vực'),
             ui.visualization(
                 plot=ui.plot([
-                    ui.mark(type='line',  x='=month', y='=valuse', color='=areas',
+                    ui.mark(type='line',  x='=month', y='=value', color='=areas',
                             color_range='#1640D6 #BE3144 #FF6C22 #557C55'),
                 ]),
                 data=data(
-                    fields=['areas', 'month', 'valuse'],
+                    fields=['areas', 'month', 'value'],
                     rows=[('Nghiền Than', next(env_month1), next(env_nghien_than)) for i in range(9)] + 
                         [('Lò Nung', next(env_month2), next(env_lo_nung)) for i in range(9)] +
                         [('Làm Nguội', next(env_month3), next(env_lam_nguoi)) for i in range(9)] +
