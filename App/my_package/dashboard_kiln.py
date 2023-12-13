@@ -41,19 +41,19 @@ async def show_dashboard_kiln(q: Q):
 
 #----- Body
 ##---- Thông tin thiết bị
-    kiln_devices_list =tag_name_kiln()
-    num_devices = len(tag_list)
-    q.page['info_device'] = ui.form_card(
-        box='top_right',
-        title='Theo dõi thiết bị',
-        items=[
-            ui.dropdown(name='dropdown', label='Dropdown', choices=[
-                ui.choice(name=next(kiln_devices_list), label=next(kiln_devices_list)) for i in range(2)
-            ]),
-            ui.text(f'{kiln_devices_list} and {num_devices} and {tag_list}'),
-            ui.text(f'{", ".join(str(next(kiln_devices_list)) for _ in range(2))}'),
-        ],
-    )
+    # kiln_devices_list =tag_name_kiln()
+    # num_devices = len(tag_list)
+    # q.page['info_device'] = ui.form_card(
+    #     box='top_right',
+    #     title='Theo dõi thiết bị',
+    #     items=[
+    #         ui.dropdown(name='dropdown', label='Dropdown', choices=[
+    #             ui.choice(name=next(kiln_devices_list), label=next(kiln_devices_list)) for i in range(2)
+    #         ]),
+    #         ui.text(f'{kiln_devices_list} and {num_devices} and {tag_list}'),
+    #         ui.text(f'{", ".join(str(next(kiln_devices_list)) for _ in range(2))}'),
+    #     ],
+    # )
 ##---- Test display data
     # value_new = get_kiln_data(tag='Pyrometer', limit=1)
     # if value_new is not None:

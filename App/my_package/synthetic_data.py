@@ -3,6 +3,7 @@ import random
 import  sqlite3
 from .query_db import *
 
+
 lorem_ipsum = (
     'ab', 'accusamus', 'accusantium', 'ad', 'adipisci', 'alias', 'aliquam', 'aliquid', 'amet', 'animi', 'aperiam',
     'architecto', 'asperiores', 'aspernatur', 'assumenda', 'at', 'atque', 'aut', 'autem', 'beatae', 'blanditiis',
@@ -131,13 +132,13 @@ def env_value(area=None):
 
 ## Dữ liệu lò nung
 # #------------------
-distinct_data = get_distinct_data(table='kiln', name_col='tag')
-tag_list = []
-for data in distinct_data:
-    tag_list.append(data[0])
-def tag_name_kiln():
-    while True:
-        yield random.choice(tag_list)
+# distinct_data = get_distinct_data(table='kiln', name_col='tag')
+# tag_list_kiln = []
+# for tag in distinct_data:
+#     tag_list_kiln.append(tag[0])
+# def tag_name_kiln():
+#     while True:
+#         yield random.choice(tag_list_kiln)
 
 
 #------------------
