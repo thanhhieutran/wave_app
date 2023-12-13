@@ -128,7 +128,17 @@ def env_value(area=None):
             yield data
 
 
+## Dữ liệu lò nung
 # #------------------
+# distinct_data = get_distinct_data(table='kiln', name_col='tag')
+# tag_list_kiln = []
+# for tag in distinct_data:
+#     tag_list_kiln.append(tag[0])
+# def tag_name_kiln():
+#     while True:
+#         yield random.choice(tag_list_kiln)
+
+
 
 
 #------------------
