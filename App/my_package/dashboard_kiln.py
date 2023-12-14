@@ -18,9 +18,9 @@ async def show_dashboard_kiln(q: Q):
                 ui.zone('title'),
                 ui.zone('body', size='1000px', zones=[
                     ui.zone('top', direction=ui.ZoneDirection.ROW, zones=[
-                        ui.zone('top_left', direction=ui.ZoneDirection.COLUMN, size='30%'),
-                        ui.zone('top_mid', direction=ui.ZoneDirection.COLUMN, size='30%'),
-                        ui.zone('top_right', direction=ui.ZoneDirection.COLUMN, size='40%'),
+                        ui.zone('top_left', direction=ui.ZoneDirection.COLUMN, size='25%'),
+                        ui.zone('top_mid', direction=ui.ZoneDirection.COLUMN, size='20%'),
+                        ui.zone('top_right', direction=ui.ZoneDirection.COLUMN, size='55%'),
                     ]),
                     # ui.zone('bottom', direction=ui.ZoneDirection.ROW, size='40%', zones=[
                     #     ui.zone('bottom_left', direction=ui.ZoneDirection.COLUMN, size='30%'),
@@ -209,18 +209,31 @@ async def show_dashboard_kiln(q: Q):
     #         )
     #     ],
     # )
-    limit_data = 10
+    limit_data = 20
     pyrometer_data = get_kiln_data (tag="Pyrometer", limit=limit_data)  
-    pyrometer_time_data = [item[-1] for item in pyrometer_data]
+    # pyrometer_time_data = [item[-1] for item in pyrometer_data]
     pyrometer_pv_data = [item[2] for item in pyrometer_data]
-    pyrometer_data_return = [(datetime.datetime.strptime(item[-1], '%Y-%m-%d %H:%M:%S:%f').isoformat(),item[2]) for item in pyrometer_data]
+    pyrometer_data_return = [(datetime.datetime.strptime(item[-1], '%Y-%m-%d %H:%M:%S:%f').replace(microsecond=0).isoformat(), item[2]) for item in pyrometer_data]
+
+    
     q.page['process_value_pyrometer'] = ui.plot_card(
-    box='top_right',
-    title='Line',
-    data=data('year value', 20, rows=pyrometer_data_return),
-    plot=ui.plot([ui.mark(type='line', x_scale='time', x='=year', y='=value', y_min=0)])
-)
+        box='top_right',
+        title='Line',
+        data=data('TimeStamp Value', 20, rows=pyrometer_data_return),
+        plot=ui.plot([ui.mark(
+            type='line', 
+            x_scale='time-category', 
+            x='={{intl TimeStamp type="time" month="numeric" day="numeric" hour="numeric" minute="numeric" hourCycle="h24" }}',
+            y='=Value', 
+            y_min=min(pyrometer_pv_data)-10, 
+            x_title='Time', 
+            y_title='Process Value',
+            color='=red',
+                )
+            ])
+    )
     q.page['form'] = ui.form_card(box='top_right', items=[ui.text(f'{pyrometer_data_return}')])
+
 
 
 
