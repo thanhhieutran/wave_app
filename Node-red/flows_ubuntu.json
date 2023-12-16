@@ -8,12 +8,6 @@
         "env": []
     },
     {
-        "id": "7acf421780b328e9",
-        "type": "sqlitedb",
-        "db": "/home/hieutran/Documents/wave_app/sqlite3/ProcessDb",
-        "mode": "RWC"
-    },
-    {
         "id": "a58312c41f8e4a4a",
         "type": "inject",
         "z": "642df048fec32f2e",
@@ -27,9 +21,9 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "10",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": "5",
         "topic": "",
         "payload": "",
@@ -38,7 +32,13 @@
         "y": 160,
         "wires": [
             [
-                "871874b55998a2c3"
+                "871874b55998a2c3",
+                "25695589352b9c28",
+                "5df80dec583ce96a",
+                "d21ac9c689e83c1d",
+                "57449e85afdecbc3",
+                "70d994471ff8826e",
+                "751a6f8fe004d384"
             ]
         ]
     },
@@ -46,20 +46,19 @@
         "id": "871874b55998a2c3",
         "type": "function",
         "z": "642df048fec32f2e",
-        "name": "function 1",
-        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\nmsg.payload = [\"tag1\", 36,\"2023-10-12 12:31:00\"]\nreturn msg;",
+        "name": "Kiln Speed value",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\n// Cấu hình thông tin\nconst tagname = 'kiln_speed'; // Thiết lập tên đối tượng\nconst min = 300; // Thiết lập giá trị giả lập thấp nhất\nconst max = 500; // Thiết lập giá trị giả lập cao nhất\n\n// Hàm lấy thời gian\nfunction getCurrentDateTimeFormatted() {\n    const now = new Date();\n    const year = now.getFullYear();\n    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\n    const day = String(now.getDate()).padStart(2, '0');\n    const hours = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n    const seconds = String(now.getSeconds()).padStart(2, '0');\n    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}:${milliseconds}`;\n}\n\n\n// Khởi tạo giá trị cho các biến\nvar tag = tagname;\nvar value = Math.floor(Math.random() * (max - min) + min);\nvar time = getCurrentDateTimeFormatted();\n\nmsg.payload = [tag, value, time]\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
+        "x": 530,
         "y": 180,
         "wires": [
             [
-                "e9934c974ee05d08",
-                "f82b97db86c7631b"
+                "e9934c974ee05d08"
             ]
         ]
     },
@@ -90,8 +89,136 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
-        "y": 260,
+        "x": 880,
+        "y": 420,
         "wires": []
+    },
+    {
+        "id": "25695589352b9c28",
+        "type": "function",
+        "z": "642df048fec32f2e",
+        "name": "Pyrometer  value",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\n// Cấu hình thông tin\nconst tagname = 'Pyrometer'; // Thiết lập tên đối tượng\nconst min = 1100; // Thiết lập giá trị giả lập thấp nhất\nconst max = 1300; // Thiết lập giá trị giả lập cao nhất\n\n// Hàm lấy thời gian\nfunction getCurrentDateTimeFormatted() {\n    const now = new Date();\n    const year = now.getFullYear();\n    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\n    const day = String(now.getDate()).padStart(2, '0');\n    const hours = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n    const seconds = String(now.getSeconds()).padStart(2, '0');\n    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}:${milliseconds}`;\n}\n\n\n// Khởi tạo giá trị cho các biến\nvar tag = tagname;\nvar value = Math.floor(Math.random() * (max - min) + min);\nvar time = getCurrentDateTimeFormatted();\n\nmsg.payload = [tag, value, time]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 280,
+        "wires": [
+            [
+                "e9934c974ee05d08"
+            ]
+        ]
+    },
+    {
+        "id": "5df80dec583ce96a",
+        "type": "function",
+        "z": "642df048fec32f2e",
+        "name": "Oxy GA01 -Ga01",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\n// Cấu hình thông tin\nconst tagname1 = 'Ga01'; // Thiết lập tên đối tượng\n// const tagname2 = 'Ga02'; // Thiết lập tên đối tượng\nconst min = 2; // Thiết lập giá trị giả lập thấp nhất\nconst max = 10; // Thiết lập giá trị giả lập cao nhất\n\n// Hàm lấy thời gian\nfunction getCurrentDateTimeFormatted() {\n    const now = new Date();\n    const year = now.getFullYear();\n    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\n    const day = String(now.getDate()).padStart(2, '0');\n    const hours = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n    const seconds = String(now.getSeconds()).padStart(2, '0');\n    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}:${milliseconds}`;\n}\n\n\n// Khởi tạo giá trị cho các biến\nvar tag1 = tagname1;\nvar value1 = Math.floor(Math.random() * (max - min) + min);\n// var tag2 = tagname2;\n// var value2 = Math.floor(Math.random() * (max - min) + min);\nvar time = getCurrentDateTimeFormatted();\n\nmsg.payload = [tag1, value1, time]\n// msg.payload = [tag2, value2, time]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 340,
+        "wires": [
+            [
+                "e9934c974ee05d08"
+            ]
+        ]
+    },
+    {
+        "id": "d21ac9c689e83c1d",
+        "type": "function",
+        "z": "642df048fec32f2e",
+        "name": "Oxy GA02- Ga02",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\n// Cấu hình thông tin\n// const tagname1 = 'Ga01'; // Thiết lập tên đối tượng\nconst tagname2 = 'Ga02'; // Thiết lập tên đối tượng\nconst min = 2; // Thiết lập giá trị giả lập thấp nhất\nconst max = 10; // Thiết lập giá trị giả lập cao nhất\n\n// Hàm lấy thời gian\nfunction getCurrentDateTimeFormatted() {\n    const now = new Date();\n    const year = now.getFullYear();\n    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\n    const day = String(now.getDate()).padStart(2, '0');\n    const hours = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n    const seconds = String(now.getSeconds()).padStart(2, '0');\n    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}:${milliseconds}`;\n}\n\n\n// Khởi tạo giá trị cho các biến\n// var tag1 = tagname1;\n// var value1 = Math.floor(Math.random() * (max - min) + min);\nvar tag2 = tagname2;\nvar value2 = Math.floor(Math.random() * (max - min) + min);\nvar time = getCurrentDateTimeFormatted();\n\n// msg.payload = [tag1, value1, time]\nmsg.payload = [tag2, value2, time]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 400,
+        "wires": [
+            [
+                "e9934c974ee05d08"
+            ]
+        ]
+    },
+    {
+        "id": "57449e85afdecbc3",
+        "type": "function",
+        "z": "642df048fec32f2e",
+        "name": "BET  value",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\n// Cấu hình thông tin\nconst tagname = 'BET'; // Thiết lập tên đối tượng\nconst min = 990; // Thiết lập giá trị giả lập thấp nhất\nconst max = 1200; // Thiết lập giá trị giả lập cao nhất\n\n// Hàm lấy thời gian\nfunction getCurrentDateTimeFormatted() {\n    const now = new Date();\n    const year = now.getFullYear();\n    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\n    const day = String(now.getDate()).padStart(2, '0');\n    const hours = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n    const seconds = String(now.getSeconds()).padStart(2, '0');\n    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}:${milliseconds}`;\n}\n\n\n// Khởi tạo giá trị cho các biến\nvar tag = tagname;\nvar value = Math.floor(Math.random() * (max - min) + min);\nvar time = getCurrentDateTimeFormatted();\n\nmsg.payload = [tag, value, time]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 460,
+        "wires": [
+            [
+                "e9934c974ee05d08"
+            ]
+        ]
+    },
+    {
+        "id": "70d994471ff8826e",
+        "type": "function",
+        "z": "642df048fec32f2e",
+        "name": "NOx  value -NOx",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\n// Cấu hình thông tin\nconst tagname = 'NOx'; // Thiết lập tên đối tượng\nconst min = 5; // Thiết lập giá trị giả lập thấp nhất\nconst max = 19; // Thiết lập giá trị giả lập cao nhất\n\n// Hàm lấy thời gian\nfunction getCurrentDateTimeFormatted() {\n    const now = new Date();\n    const year = now.getFullYear();\n    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\n    const day = String(now.getDate()).padStart(2, '0');\n    const hours = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n    const seconds = String(now.getSeconds()).padStart(2, '0');\n    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}:${milliseconds}`;\n}\n\n\n// Khởi tạo giá trị cho các biến\nvar tag = tagname;\nvar value = Math.floor(Math.random() * (max - min) + min);\nvar time = getCurrentDateTimeFormatted();\n\nmsg.payload = [tag, value, time]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 520,
+        "wires": [
+            [
+                "e9934c974ee05d08",
+                "f82b97db86c7631b"
+            ]
+        ]
+    },
+    {
+        "id": "751a6f8fe004d384",
+        "type": "function",
+        "z": "642df048fec32f2e",
+        "name": "Tải lò -Kiln_Amp",
+        "func": "msg.topic = `INSERT INTO kiln (tag, value, time) VALUES ($tag, $value, $time)`\n// Cấu hình thông tin\nconst tagname = 'Kiln_Amp'; // Thiết lập tên đối tượng\nconst min = 50; // Thiết lập giá trị giả lập thấp nhất\nconst max = 100; // Thiết lập giá trị giả lập cao nhất\n\n// Hàm lấy thời gian\nfunction getCurrentDateTimeFormatted() {\n    const now = new Date();\n    const year = now.getFullYear();\n    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\n    const day = String(now.getDate()).padStart(2, '0');\n    const hours = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n    const seconds = String(now.getSeconds()).padStart(2, '0');\n    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}:${milliseconds}`;\n}\n\n\n// Khởi tạo giá trị cho các biến\nvar tag = tagname;\nvar value = Math.floor(Math.random() * (max - min) + min);\nvar time = getCurrentDateTimeFormatted();\n\nmsg.payload = [tag, value, time]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 600,
+        "wires": [
+            [
+                "f82b97db86c7631b",
+                "e9934c974ee05d08"
+            ]
+        ]
+    },
+    {
+        "id": "7acf421780b328e9",
+        "type": "sqlitedb",
+        "db": "/home/hieutran/Documents/wave_app/sqlite3/ProcessDb",
+        "mode": "RWC"
     }
 ]
